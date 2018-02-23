@@ -1,0 +1,30 @@
+{
+  "name": "movie-request",
+  "version": "1.0.0",
+  "description": "Creating a sample site to allow for data entry and interaction",
+  "main": "index.js",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "ejs": "^2.5.7",
+    "express": "^4.16.2",
+    "forever": "^0.15.3",
+    "mongodb": "^3.0.2"
+  },
+  "devDependencies": {
+    "nodemon": "^1.15.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/atoddj/movie-request.git"
+  },
+  "author": "Todd Jones",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/atoddj/movie-request/issues"
+  },
+  "homepage": "https://github.com/atoddj/movie-request#readme"
+}
