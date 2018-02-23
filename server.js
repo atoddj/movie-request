@@ -22,7 +22,6 @@ app.get('/', (req, res) => {
     if (err) return console.log(err);
     res.render('index.ejs', {movies: result});
   });
-
 });
 
 app.post('/request', (req, res) => {
