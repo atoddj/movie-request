@@ -1,0 +1,19 @@
+// Displays the homepage
+app.get('/', (req, res) => {
+  var cursor = db.collection('requests').find().toArray((err, result) => {
+    if (err) return console.log(err);
+    res.render('index.ejs', {movies: result});
+  });
+});
+
+// Handles new movie/show requests
+app.post('/request', (req, res) => {
+  req.body.timestamp = new Date();
+  req.body.status = 'pending';
+  db.collection('requests').save(req.body, (err, result) => {
+    if(err) return console.log(err);
+    console.log('saved to database');
+    res.redirect('/');
+  });
+  // code to send a slack message here? 
+});
