@@ -1,11 +1,10 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <% include partials/head %>
 </head>
 <body>
+  <% include partials/navbar %>
   <div class="container">
     <h1>Movie Requests</h1>
     <ul class="movies">
@@ -20,9 +19,9 @@
     <form action="/request" method="POST">
       <input type="text" placeholder="Movie name" name="movie_name">
       <input type="text" placeholder="Imdb link" name="imdb_url">
-      <button type="submit">Submit</button>
+      <button type="submit" class='btn btn-secondary'>Submit</button>
     </form>
   </div>
-
+<% include partials/js %>
 </body>
 </html>

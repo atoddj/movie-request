@@ -1,19 +1,22 @@
-// Displays the homepage
-app.get('/', (req, res) => {
-  var cursor = db.collection('requests').find().toArray((err, result) => {
-    if (err) return console.log(err);
-    res.render('index.ejs', {movies: result});
-  });
-});
+module.exports = (app) => {
 
-// Handles new movie/show requests
-app.post('/request', (req, res) => {
-  req.body.timestamp = new Date();
-  req.body.status = 'pending';
-  db.collection('requests').save(req.body, (err, result) => {
-    if(err) return console.log(err);
-    console.log('saved to database');
-    res.redirect('/');
+  // Displays the homepage
+  app.get('/', (req, res) => {
+    var cursor = app.db.collection('requests').find().toArray((err, result) => {
+      if (err) return console.log(err);
+      res.render('index.ejs', {movies: result});
+    });
   });
-  // code to send a slack message here? 
-});
+
+  // Handles new movie/show requests
+  app.post('/request', (req, res) => {
+    req.body.timestamp = new Date();
+    req.body.status = 'pending';
+    app.db.collection('requests').save(req.body, (err, result) => {
+      if(err) return console.log(err);
+      console.log('saved to database');
+      res.redirect('/');
+    });
+    // code to send a slack message here?
+  });
+};
