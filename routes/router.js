@@ -1,4 +1,11 @@
 module.exports = (app) => {
+  const bodyParser = require('body-parser');
+  const Slack = require('node-slackr');
+  const config = require('../config/config.js');
+  // Use the bodyparser to pass form info (middleware)
+  // https://www.npmjs.com/package/body-parser
+  app.use(bodyParser.urlencoded({extended: true}));
+  slack = new Slack(config.tori.incoming_webhook, config.tori.options);
 
   // Displays the homepage
   app.get('/', (req, res) => {
@@ -14,9 +21,9 @@ module.exports = (app) => {
     req.body.status = 'pending';
     app.db.collection('requests').save(req.body, (err, result) => {
       if(err) return console.log(err);
-      console.log('saved to database');
       res.redirect('/');
     });
-    // code to send a slack message here?
+    config.setupSlackMessageFormat(req.body);
+    slack.notify(config.tori.newRequest);
   });
 };

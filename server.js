@@ -1,8 +1,8 @@
 const express = require('express');
-const bodyParser = require('body-parser');
 const MongoClient = require('mongodb').MongoClient;
 const app = express();
 var routes = require('./routes/router');
+var config = require('./config/config')
 
 // Use the EJS templating engine
 app.set('view engine', 'ejs');
@@ -10,12 +10,8 @@ app.set('view engine', 'ejs');
 // Setup routes for express
 routes(app);
 
-// Use the bodyparser to pass form info (middleware)
-// https://www.npmjs.com/package/body-parser
-app.use(bodyParser.urlencoded({extended: true}));
-
 //Connect to mongo database using system environment variables
-MongoClient.connect('mongodb://' + process.env.MONGODB_USER + ':' + process.env.MONGODB_PASS + '@ds147118.mlab.com:47118/movie-requests', (err, database) => {
+MongoClient.connect('mongodb://' + config.mongodb.user + ':' + config.mongodb.pass + '@ds147118.mlab.com:47118/movie-requests', (err, database) => {
   if (err) {
     return console.log(err);
   }
