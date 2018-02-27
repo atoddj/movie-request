@@ -1,0 +1,8 @@
+{
+  "incoming_webhook": "https://hooks.slack.com/services/KEEP/IT/SECRET",
+  "options": {
+    "channel": "#examplechannel",
+    "username": "AnnouncerBot",
+    "icon_emoji": ":droplet:"
+  }
+}

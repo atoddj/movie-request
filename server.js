@@ -2,7 +2,7 @@ const express = require('express');
 const MongoClient = require('mongodb').MongoClient;
 const app = express();
 var routes = require('./routes/router');
-var config = require('./config/config')
+var config = require('./config/config');
 
 // Use the EJS templating engine
 app.set('view engine', 'ejs');

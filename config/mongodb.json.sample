@@ -1,0 +1,4 @@
+{
+  "user": "user-with-access-to-db",
+  "pass": "PASSPHRASE-HERE"
+}
