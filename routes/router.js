@@ -9,9 +9,16 @@ module.exports = (app) => {
 
   // Displays the homepage
   app.get('/', (req, res) => {
-    var cursor = app.db.collection('requests').find().toArray((err, result) => {
+    var cursor = app.db.collection('updates').find().toArray((err, result) => {
       if (err) return console.log(err);
-      res.render('index.ejs', {movies: result});
+      res.render('index.ejs', {posts: result});
+    });
+  });
+  
+  app.get('/request', (req, res) => {
+    app.db.collection('requests').find().toArray((err, result) => {
+      if (err) return console.log(err);
+      res.render('request.ejs', {movies: result});
     });
   });
 

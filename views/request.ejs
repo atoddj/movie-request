@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <% include partials/head %>
+</head>
+<body>
+  <% include partials/navbar %>
+  <div class="container">
+    <h1>Requests</h1>
+    <ul class="movies">
+      <% for(var i=0; i<movies.length; i++) { %>
+        <li class="movie">
+          <span><a href="<%= movies[i].imdb_url %>" target="_blank"><%= movies[i].movie_name %></a> -</span>
+          <span><%= movies[i].status %></span>
+        </li>
+      <% } %>
+    </ul>
+    <h2>What'cha need?</h2>
+    <form action="/request" method="POST">
+      <input type="text" placeholder="Movie name" name="movie_name">
+      <input type="text" placeholder="Imdb link" name="imdb_url">
+      <button type="submit" class='btn btn-secondary'>Submit</button>
+    </form>
+  </div>
+<% include partials/js %>
+</body>
+</html>
