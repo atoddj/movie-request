@@ -7,11 +7,13 @@
   <% include partials/navbar %>
   <div class="container">
     <h1>Updates</h1>
-      <% for(var i=0; i<posts.length; i++) { %>
+    <% for(var i=0; i<posts.length; i++) { %>
+      <div class="post-container">
         <h2 class="post-title"><%= posts[i].title %></h2>
         <div class="post-author"><%=posts[i].author %></div>
         <div class="post-body"><%= posts[i].body %></div>
-      <% } %>
+      </div>
+    <% } %>
   </div>
 <% include partials/js %>
 </body>
