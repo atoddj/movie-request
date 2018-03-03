@@ -14,7 +14,7 @@ module.exports = (app) => {
       res.render('index.ejs', {posts: result});
     });
   });
-  
+
   app.get('/request', (req, res) => {
     app.db.collection('requests').find().toArray((err, result) => {
       if (err) return console.log(err);
@@ -28,7 +28,7 @@ module.exports = (app) => {
     req.body.status = 'pending';
     app.db.collection('requests').save(req.body, (err, result) => {
       if(err) return console.log(err);
-      res.redirect('/');
+      res.redirect('/request');
     });
     config.setupSlackMessageFormat(req.body);
     slack.notify(config.tori.newRequest);

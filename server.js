@@ -11,7 +11,7 @@ app.set('view engine', 'ejs');
 routes(app);
 
 //Connect to mongo database using system environment variables
-MongoClient.connect('mongodb://' + config.mongodb.user + ':' + config.mongodb.pass + '@ds147118.mlab.com:47118/movie-requests', (err, database) => {
+MongoClient.connect(config.mongodb.uri, (err, database) => {
   if (err) {
     return console.log(err);
   }
