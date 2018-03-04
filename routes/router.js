@@ -2,6 +2,7 @@ module.exports = (app) => {
   const bodyParser = require('body-parser');
   const Slack = require('node-slackr');
   const config = require('../config/config.js');
+  var request = require('request');
   // Use the bodyparser to pass form info (middleware)
   // https://www.npmjs.com/package/body-parser
   app.use(bodyParser.urlencoded({extended: true}));
@@ -19,7 +20,17 @@ module.exports = (app) => {
     app.db.collection('requests').find().toArray((err, result) => {
       if (err) return console.log(err);
       if (req.query.q) {
-        res.render('request.ejs', {movies: result, searchQuery: req.query.q});
+        request({
+          uri: config.tmdb.url,
+          qs: {
+            api_key: config.tmdb.api_key,
+            query: req.query.q
+          }
+        }, (err, response, body) => {
+          if(err) console.log(err);
+          req.query.results = JSON.parse(body);
+          res.render('request.ejs', {movies: result, searchQuery: req.query});
+        });
       } else {
         res.render('request.ejs', {movies: result, searchQuery: null});
       }
