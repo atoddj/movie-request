@@ -1,3 +1,4 @@
 node_modules/
 config/tori.json
 config/mongodb.json
+config/tmdb.json
