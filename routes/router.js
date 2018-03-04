@@ -18,7 +18,11 @@ module.exports = (app) => {
   app.get('/request', (req, res) => {
     app.db.collection('requests').find().toArray((err, result) => {
       if (err) return console.log(err);
-      res.render('request.ejs', {movies: result});
+      if (req.query.q) {
+        res.render('request.ejs', {movies: result, searchQuery: req.query.q});
+      } else {
+        res.render('request.ejs', {movies: result, searchQuery: null});
+      }
     });
   });
 

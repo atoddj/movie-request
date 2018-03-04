@@ -7,15 +7,15 @@
   <% include partials/navbar %>
   <div class="container">
     <div class="row">
-      <div class="col-sm-8 blog-main">
-        <h1>What'cha need?</h1>
-        <form action="/request" method="POST">
-          <input type="text" placeholder="Movie name" name="movie_name">
-          <input type="text" placeholder="Imdb link" name="imdb_url">
-          <button type="submit" class='btn btn-secondary'>Submit</button>
-        </form>
+      <div class="col-sm-8">
+        <% include partials/searchForm %> 
       </div>
-      <div class="offset-sm-1 col-sm-3 blog-sidebar">
+      <% if (searchQuery) { %>
+        <div class="col-sm-8">
+          <%= searchQuery %>
+        </div>
+      <% } %>
+      <div class="offset-sm-1 col-sm-3">
         <div class="card card-body bg-light">
           <h2>Requests</h2>
           <ul class="movies">
