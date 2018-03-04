@@ -2,6 +2,7 @@ var config = {
   //tori is the name of my slackbot - configure to your needs
   tori: require('./tori.json'),
   mongodb: require('./mongodb.json'),
+  tmdb: require('./tmdb.json');
   setupSlackMessageFormat: (data) => {
     config.tori.newRequest = {
       "attachments": [
