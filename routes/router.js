@@ -1,10 +1,9 @@
+var bodyParser = require('body-parser');
+var Slack = require('node-slackr');
+var config = require('../config/config.js');
+var request = require('request');
+
 module.exports = (app) => {
-  const bodyParser = require('body-parser');
-  const Slack = require('node-slackr');
-  const config = require('../config/config.js');
-  var request = require('request');
-  // Use the bodyparser to pass form info (middleware)
-  // https://www.npmjs.com/package/body-parser
   app.use(bodyParser.urlencoded({extended: true}));
   slack = new Slack(config.tori.incoming_webhook, config.tori.options);
 
@@ -21,7 +20,7 @@ module.exports = (app) => {
       if (err) return console.log(err);
       if (req.query.q) {
         request({
-          uri: config.tmdb.url,
+          uri: config.tmdb.movieSearch,
           qs: {
             api_key: config.tmdb.api_key,
             query: req.query.q
