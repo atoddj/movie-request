@@ -11,7 +11,7 @@ module.exports = (app) => {
   app.get('/', (req, res) => {
     var cursor = app.db.collection('updates').find().toArray((err, result) => {
       if (err) return console.log(err);
-      res.render('index.ejs', {posts: result});
+      res.render('index.ejs', {posts: result, searchQuery: null});
     });
   });
 
