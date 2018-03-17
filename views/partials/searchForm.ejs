@@ -7,9 +7,3 @@
     </form>
   </div>
 </div>
-<% if (searchQuery.q) { %>
-  <script>
-    var searchInput = document.querySelectorAll('[name="q"]');
-    searchInput.value = "<%= searchQuery.q %>";
-  </script>
-<% } %>
