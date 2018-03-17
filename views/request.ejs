@@ -13,9 +13,15 @@
           <div class="container">
             <span><%= searchQuery.results.total_results %> result<% if (parseInt(searchQuery.results.total_results) > 1) { %>s<% } %> for "<%= searchQuery.q %>"</span>
               <% for(var i=0; i<searchQuery.results.results.length; i++ ) { %>
-                <div class="row top-buffer">
-                  <div class="col-sm-12">
+                <div class="row top-buffer outline">
+                  <div class="col-sm-2">
                     <img src="http://image.tmdb.org/t/p/w92/<%= searchQuery.results.results[i].poster_path %>" alt="Poster image for <%= searchQuery.results.results[i].title %>" />
+                  </div>
+                  <div class="col-sm-8">
+                    <h3><%= searchQuery.results.results[i].title %> (<%= new Date(searchQuery.results.results[i].release_date).getFullYear(); %>)</h3>
+                    <h4></h4>
+                    <p><%= searchQuery.results.results[i].overview %></p>
+                    <a class="badge badge-info" href="#">+ Request</a>
                   </div>
                 </div>
               <% } %>
