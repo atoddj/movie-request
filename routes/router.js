@@ -47,4 +47,9 @@ module.exports = (app) => {
     config.setupSlackMessageFormat(req.body);
     slack.notify(config.tori.newRequest);
   });
+
+  app.get('/add', (req, res) => {
+    console.log(req.query);
+    res.render('add.ejs');
+  });
 };
