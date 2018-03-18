@@ -21,7 +21,7 @@
                     <h3><%= searchQuery.results.results[i].title %> (<%= new Date(searchQuery.results.results[i].release_date).getFullYear(); %>)</h3>
                     <h4></h4>
                     <p><%= searchQuery.results.results[i].overview %></p>
-                    <a class="badge badge-info" href="#">+ Request</a>
+                    <a class="badge badge-info add-request" data-tmdbid="<%= searchQuery.results.results[i].id %>" data-title="<%= searchQuery.results.results[i].title %>" data-year="<%= new Date(searchQuery.results.results[i].release_date).getFullYear(); %>" href="#">+ Request</a>
                   </div>
                 </div>
               <% } %>
@@ -34,7 +34,7 @@
           <ul class="movies">
             <% for(var i=0; i<movies.length; i++) { %>
               <li class="movie">
-                <span><a href="<%= movies[i].imdb_url %>" target="_blank"><%= movies[i].movie_name %></a> -</span>
+                <span><a href="<%= movies[i].url %>" target="_blank"><%= movies[i].movie_name %></a> -</span>
                 <span><%= movies[i].status %></span>
               </li>
             <% } %>

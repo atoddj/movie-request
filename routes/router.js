@@ -44,7 +44,7 @@ module.exports = (app) => {
       if(err) return console.log(err);
       res.redirect('/request');
     });
-    config.setupSlackMessageFormat(req.body);
+    config.setupSlackMessageFormat(req.body); //function sets up config.tori.newRequest object for slack.notify()
     slack.notify(config.tori.newRequest);
   });
 

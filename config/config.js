@@ -9,7 +9,7 @@ var config = {
         {
           "title": "New request",
           "text": data.movie_name,
-          "fields": [{"title": "IMDb link","value": data.imdb_url}]
+          "fields": [{"title": "year", "value": data.year},{"title": "More info","value": data.url}]
         }
       ]
     };
