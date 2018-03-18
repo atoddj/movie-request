@@ -42,14 +42,13 @@ module.exports = (app) => {
     req.body.status = 'pending';
     app.db.collection('requests').save(req.body, (err, result) => {
       if(err) return console.log(err);
-      res.redirect('/request');
+      res.send(result);
     });
     config.setupSlackMessageFormat(req.body); //function sets up config.tori.newRequest object for slack.notify()
     slack.notify(config.tori.newRequest);
   });
 
   app.get('/add', (req, res) => {
-    console.log(req.query);
     res.render('add.ejs', {searchQuery: null});
   });
 };

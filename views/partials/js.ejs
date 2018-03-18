@@ -9,7 +9,7 @@
     $('.add-request').click(function(e) {
       e.preventDefault();
       var tmdb_url = 'https://www.themoviedb.org/movie/' + $(this).data('tmdbid');
-      $.post( "/request", {movie_name: $(this).data('title'), url: tmdb_url, year: $(this).data('year')} );
+      $.post( "/request", {movie_name: $(this).data('title'), url: tmdb_url, year: $(this).data('year')} ).done(function() {location.reload()});
     });
   </script>
 <% } %>
