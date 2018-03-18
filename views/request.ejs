@@ -13,7 +13,7 @@
           <div class="container">
             <span><%= searchQuery.results.total_results %> result<% if (parseInt(searchQuery.results.total_results) > 1) { %>s<% } %> for "<%= searchQuery.q %>"</span>
               <% for(var i=0; i<searchQuery.results.results.length; i++ ) { %>
-                <div class="row top-buffer outline">
+                <div class="row top-buffer<% if (i%2) { %> bg-light<% } %>">
                   <div class="col-sm-2">
                     <img src="http://image.tmdb.org/t/p/w92/<%= searchQuery.results.results[i].poster_path %>" alt="Poster image for <%= searchQuery.results.results[i].title %>" />
                   </div>
