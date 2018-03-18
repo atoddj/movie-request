@@ -50,6 +50,6 @@ module.exports = (app) => {
 
   app.get('/add', (req, res) => {
     console.log(req.query);
-    res.render('add.ejs');
+    res.render('add.ejs', {searchQuery: null});
   });
 };
