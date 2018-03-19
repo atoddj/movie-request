@@ -26,8 +26,14 @@ module.exports = (app) => {
             query: req.query.q
           }
         }, (err, response, body) => {
+          body = JSON.parse(body);
           if(err) console.log(err);
-          req.query.results = JSON.parse(body);
+          var idList = [];
+          for(var i=0, j=body.results.length; i<j; i++) {
+            idList.push(body.results[i].id);
+          }
+          req.query.existing = idList;
+          req.query.results = body;
           res.render('request.ejs', {movies: result, searchQuery: req.query});
         });
       } else {
