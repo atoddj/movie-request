@@ -28,11 +28,6 @@ module.exports = (app) => {
         }, (err, response, body) => {
           body = JSON.parse(body);
           if(err) console.log(err);
-          var idList = [];
-          for(var i=0, j=body.results.length; i<j; i++) {
-            idList.push(body.results[i].id);
-          }
-          req.query.existing = idList;
           req.query.results = body;
           res.render('request.ejs', {movies: result, searchQuery: req.query});
         });

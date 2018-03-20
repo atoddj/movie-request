@@ -21,10 +21,15 @@
                     <h3><%= searchQuery.results.results[i].title %> (<%= new Date(searchQuery.results.results[i].release_date).getFullYear(); %>)</h3>
                     <h4></h4>
                     <p><%= searchQuery.results.results[i].overview %></p>
-                    <% if(searchQuery.existing.indexOf(searchQuery.results.results[i].id) > 0) { %>
-                      exists in requests
-                    <% } %>
-                    <a class="badge badge-info add-request" data-tmdbid="<%= searchQuery.results.results[i].id %>" data-title="<%= searchQuery.results.results[i].title %>" data-year="<%= new Date(searchQuery.results.results[i].release_date).getFullYear(); %>" href="#">+ Request</a>
+                    <% 
+                      var found = movies.find(function(element) {
+                        return element._id === searchQuery.results.results[i].id.toString();
+                      });
+                      if(found) { %>
+                        <a href="#" class="btn badge badge-secondary add-request disabled"><%= found.status %></a>
+                    <%  } else { %>
+                        <a class="badge badge-info add-request" data-tmdbid="<%= searchQuery.results.results[i].id %>" data-title="<%= searchQuery.results.results[i].title %>" data-year="<%= new Date(searchQuery.results.results[i].release_date).getFullYear(); %>" href="#">+ Request</a>
+                    <%  } %>
                   </div>
                 </div>
               <% } %>
