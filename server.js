@@ -17,7 +17,7 @@ MongoClient.connect(config.mongodb.uri, (err, database) => {
     return console.log(err);
   }
   app.db = database.db('movie-requests');
-  app.listen(8000, () => {
+  app.listen(process.env.PORT || 8000, () => {
     console.log('listening on port 8000');
   });
 });
