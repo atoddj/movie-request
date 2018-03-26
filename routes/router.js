@@ -49,7 +49,4 @@ module.exports = (app) => {
     slack.notify(config.tori.newRequest);
   });
 
-  app.get('/add', (req, res) => {
-    res.render('add.ejs', {searchQuery: null});
-  });
 };
