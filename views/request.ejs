@@ -41,7 +41,7 @@
                       <%  } else { %>
                           <a class="badge badge-info add-request" data-tmdbid="<%= searchQuery.results.results[i].id %>" data-title="<%= searchQuery.results.results[i].title || searchQuery.results.results[i].name %>" data-year="<%=
                             new Date(searchQuery.results.results[i].release_date ||searchQuery.results.results[i].first_air_date).getFullYear();
-                            %>" data-mediaType="<%= searchQuery.results.results[i].media_type %>" href="#">+ Request</a>
+                            %>" data-mediatype="<%= searchQuery.results.results[i].media_type %>" href="#">+ Request</a>
                       <%  } %>
                     </div>
                   </div>

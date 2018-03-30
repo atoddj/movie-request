@@ -8,9 +8,9 @@
     searchInput.value = "<%= searchQuery.q %>";
     $('.add-request').click(function(e) {
       e.preventDefault();
-      var mediaType = $(this).data('mediaType');
-      var tmdb_url = 'https://www.themoviedb.org/' + mediaType + '/' + $(this).data('tmdbid');
-      $.post( "/request", {movie_name: $(this).data('title'), url: tmdb_url, mediaType: mediaType, year: $(this).data('year'), _id: $(this).data('tmdbid')}).done(function() {location.reload()});
+      var mediatype = $(this).data('mediatype');
+      var tmdb_url = 'https://www.themoviedb.org/' + mediatype + '/' + $(this).data('tmdbid');
+      $.post( "/request", {movie_name: $(this).data('title'), url: tmdb_url, mediatype: mediatype, year: $(this).data('year'), _id: $(this).data('tmdbid')}).done(function() {location.reload()});
     });
   </script>
 <% } %>
