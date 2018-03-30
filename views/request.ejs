@@ -18,8 +18,8 @@
                     <img src="//image.tmdb.org/t/p/w92/<%= searchQuery.results.results[i].poster_path %>" alt="Poster image for <%= searchQuery.results.results[i].title %>" />
                   </div>
                   <div class="col-sm-8">
-                    <h3><%= searchQuery.results.results[i].title %> (<%= new Date(searchQuery.results.results[i].release_date).getFullYear(); %>)</h3>
-                    <h4></h4>
+                    <h3><%= searchQuery.results.results[i].title || searchQuery.results.results[i].name %> (<%= new Date(searchQuery.results.results[i].release_date || searchQuery.results.results[i].first_air_date).getFullYear(); %>)</h3>
+                    <h4><%= searchQuery.results.results[i].media_type %></h4>
                     <p><%= searchQuery.results.results[i].overview %></p>
                     <%
                       var found = movies.find(function(element) {
