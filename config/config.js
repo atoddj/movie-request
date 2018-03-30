@@ -9,7 +9,7 @@ var config = {
         {
           "title": "New request",
           "text": data.movie_name,
-          "fields": [{"title": "year", "value": data.year},{"title": "More info","value": data.url}]
+          "fields": [{"title": "year", "value": data.year},{"title": "More info","value": data.url},{"title": "Type", "value": data.mediaType}]
         }
       ]
     };
