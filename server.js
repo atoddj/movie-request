@@ -1,15 +1,8 @@
 const express = require('express');
 const MongoClient = require('mongodb').MongoClient;
-const app = express();
-var routes = require('./routes/router');
+var app = require('./app')
 var config = require('./config/config');
-
-// Use the EJS templating engine
-app.set('view engine', 'ejs');
-app.use(express.static('resources'));
-
-// Setup routes for express
-routes(app);
+var port = process.env.PORT || 3000;
 
 //Connect to mongo database using system environment variables
 MongoClient.connect(config.mongodb.uri, (err, database) => {
@@ -17,7 +10,7 @@ MongoClient.connect(config.mongodb.uri, (err, database) => {
     return console.log(err);
   }
   app.db = database.db('movie-requests');
-  app.listen(process.env.PORT || 8000, () => {
-    console.log('listening on port 8000');
+  app.listen(port, () => {
+    console.log('listening on port ' + port);
   });
 });
