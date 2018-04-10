@@ -9,6 +9,7 @@
     "express": "^4.16.2",
     "forever": "^0.15.3",
     "mongodb": "^3.0.2",
+    "mongoose": "^5.0.14",
     "node-slackr": "^0.1.4",
     "request": "^2.83.0"
   },

@@ -20,3 +20,4 @@ I've also got some ideas that aren't quite ready to be added to the to-do list b
 1. additional slack bot control to fulfill requests
 1. search our existing database of movies to avoid duplicates
 1. Add movie db integration for dropdown selection
+1. Find api for netflix/hulu/prime availability of search results
