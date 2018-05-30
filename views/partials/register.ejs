@@ -11,22 +11,21 @@
       <div class="modal-body">
         <form>
           <div class="form-group">
-            <label for="email">Email address</label>
-            <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email" />
-            <small id="emailHelp" class="form-text text-muted">I'll never share your email with anyone else. Unless I can make money from it.</small>
+            <label for="email">User name</label>
+            <input type="text" class="form-control" id="registration-username" placeholder="Enter a username" data-name="username"/>
           </div>
           <div class="form-group">
             <label for="password">Password</label>
-            <input type="password" class="form-control" id="password" placeholder="Password" />
+            <input type="password" class="form-control" id="registration-password" placeholder="Password" data-name="password"/>
           </div>
           <div class="form-group">
             <label for="exampleInputPassword1">Password confirmation</label>
-            <input type="password" class="form-control" id="passwordConf" placeholder="Password" />
+            <input type="password" class="form-control" id="registration-password-conf" placeholder="Confirm Password" data-name="passwordConf"/>
           </div>
         </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary">Submit</button>
+        <button type="button" class="btn btn-primary" data-name="submit" data-action="/user/register">Submit</button>
       </div>
     </div>
   </div>

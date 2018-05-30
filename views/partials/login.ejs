@@ -11,17 +11,17 @@
       <div class="modal-body">
         <form>
           <div class="form-group">
-            <label for="email">Email address</label>
-            <input type="email" class="form-control" id="email" placeholder="Enter email" />
+            <label for="email">User name</label>
+            <input type="text" class="form-control" id="login-username" placeholder="Enter username" data-name="username"/>
           </div>
           <div class="form-group">
             <label for="password">Password</label>
-            <input type="password" class="form-control" id="password" placeholder="Password" />
+            <input type="password" class="form-control" id="login-password" placeholder="Password" data-name="password"/>
           </div>
         </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary">Submit</button>
+        <button type="button" class="btn btn-primary" data-name="submit" data-action="/user/login">Submit</button>
       </div>
     </div>
   </div>

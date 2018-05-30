@@ -14,3 +14,19 @@
     });
   </script>
 <% } %>
+
+<script type="text/javascript">
+  $('[data-name="submit"]').on('click', (e) => {
+    e.preventDefault();
+    $.post($(e.currentTarget).data('action'), getValues($(e.currentTarget).parents()[3].attributes.id.value)).done(() => {console.log('maybe it worked')});
+  });
+
+  var getValues = (modalId) => {
+    var userObj = {};
+    $('#' + modalId + ' input').each((index, element) => {
+      userObj[$(element).data('name')] = element.value;
+    });
+    return userObj;
+  }
+
+</script>
