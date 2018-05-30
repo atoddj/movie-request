@@ -6,7 +6,7 @@ router.use(bodyParser.json());
 var User = require('./user');
 
 // CREATE A NEW USER
-router.post('/', (req, res) => {
+router.post('/register', (req, res) => {
   User.create({
     username: req.body.username,
     password: req.body.password,
