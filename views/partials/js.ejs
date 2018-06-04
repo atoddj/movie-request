@@ -18,7 +18,12 @@
 <script type="text/javascript">
   $('[data-name="submit"]').on('click', (e) => {
     e.preventDefault();
-    $.post($(e.currentTarget).data('action'), getValues($(e.currentTarget).parents()[3].attributes.id.value)).done(() => {console.log('maybe it worked')});
+    var modalId = $(e.currentTarget).parents()[3].attributes.id.value;
+    $.post($(e.currentTarget).data('action'), getValues(modalId)).done((data) => {
+      $('#' + modalId + ' .modal-body').html('Success!');
+    }).fail((data) => {
+      $('#' + modalId + ' .modal-body .error').show();
+    });
   });
 
   var getValues = (modalId) => {
