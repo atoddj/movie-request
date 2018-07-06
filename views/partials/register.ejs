@@ -1,0 +1,35 @@
+<!-- Modal -->
+<div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="registerLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="registerLabel">User registration</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="error" style="display:none;">
+          Username is already claimed
+        </div>
+        <form>
+          <div class="form-group">
+            <label for="email">User name</label>
+            <input type="text" class="form-control" id="registration-username" placeholder="Enter a username" data-name="username"/>
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" id="registration-password" placeholder="Password" data-name="password"/>
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">Password confirmation</label>
+            <input type="password" class="form-control" id="registration-password-conf" placeholder="Confirm Password" data-name="passwordConf"/>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-name="submit" data-action="/user/register">Submit</button>
+      </div>
+    </div>
+  </div>
+</div>

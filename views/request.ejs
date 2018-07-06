@@ -55,10 +55,12 @@
           <h2>Requests</h2>
           <ul class="movies">
             <% for(var i=0; i<movies.length; i++) { %>
-              <li class="movie">
-                <span><a href="<%= movies[i].url %>" target="_blank"><%= movies[i].movie_name %></a> -</span>
-                <span><%= movies[i].status %></span>
-              </li>
+              <% if (movies[i].status === 'pending') { %>
+                <li class="movie">
+                  <span><a href="<%= movies[i].url %>" target="_blank"><%= movies[i].movie_name %></a> -</span>
+                  <span><%= movies[i].status %></span>
+                </li>
+              <% } %>
             <% } %>
           </ul>
         </div>

@@ -1,9 +1,9 @@
 var express = require('express');
 var router = express.Router();
 var bodyParser = require('body-parser');
-var request = require('request');
+var fetch = require('request');
 var Request = require('./request');
-var config = require('../config/config');
+var config = require('../../config/config');
 var Slack = require('node-slackr');
 var slack = new Slack(config.tori.incoming_webhook, config.tori.options);
 router.use(bodyParser.urlencoded({extended: true}));
@@ -23,10 +23,10 @@ router.post('/', (req, res) => {
 
 // List requests
 router.get('/', (req, res) => {
-  Request.find({status: 'pending'}, (err, result) => {
+  Request.find({}, (err, result) => {
     if (err) return console.log(err);
     if (req.query.q) {
-      request({
+      fetch({
         uri: config.tmdb.movieSearch,
         qs: {
           api_key: config.tmdb.api_key,
@@ -36,7 +36,6 @@ router.get('/', (req, res) => {
         body = JSON.parse(body);
         if(err) console.log(err);
         req.query.results = body;
-        console.log(body);
         res.render('request.ejs', {movies: result, searchQuery: req.query});
       });
     } else {

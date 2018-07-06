@@ -14,3 +14,24 @@
     });
   </script>
 <% } %>
+
+<script type="text/javascript">
+  $('[data-name="submit"]').on('click', (e) => {
+    e.preventDefault();
+    var modalId = $(e.currentTarget).parents()[3].attributes.id.value;
+    $.post($(e.currentTarget).data('action'), getValues(modalId)).done((data) => {
+      $('#' + modalId + ' .modal-body').html('Success!');
+    }).fail((data) => {
+      $('#' + modalId + ' .modal-body .error').show();
+    });
+  });
+
+  var getValues = (modalId) => {
+    var userObj = {};
+    $('#' + modalId + ' input').each((index, element) => {
+      userObj[$(element).data('name')] = element.value;
+    });
+    return userObj;
+  }
+
+</script>
