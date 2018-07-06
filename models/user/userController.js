@@ -7,15 +7,20 @@ var User = require('./user');
 
 // CREATE A NEW USER
 router.post('/register', (req, res) => {
-  console.log(req.body);
-  User.create({
-    username: req.body.username,
-    password: req.body.password,
-    email: req.body.email
-  }, (err, user) => {
-    if (err) return res.status(500).send(err);
-    res.status(200).send(user);
-  });
+  if (req.body.password === req.body.passwordConf) {
+    User.create({
+      username: req.body.username,
+      password: req.body.password
+    }, (err, user) => {
+      if (err) {
+        console.log(err);
+        return res.status(500).send('There was a problem adding user into the database');
+      }
+      res.status(200).send(`Added ${user.username} to db`);
+    });
+  } else {
+    res.status(500).send('Passwords do not match');
+  }
 });
 
 // GET LIST OF ALL USERS
