@@ -23,7 +23,7 @@ router.post('/', (req, res) => {
 
 // List requests
 router.get('/', (req, res) => {
-  Request.find({status: 'pending'}, (err, result) => {
+  Request.find({}, (err, result) => {
     if (err) return console.log(err);
     if (req.query.q) {
       fetch({
