@@ -8,7 +8,7 @@ class Request extends Component {
     render() { 
         return ( 
             <div className="Request">
-                {this.props.request.name}
+                {this.props.name}
             </div>
          );
     }
