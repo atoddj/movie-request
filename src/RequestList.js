@@ -3,7 +3,6 @@ import Request from './Request';
 import axios from 'axios';
 
 const REQUEST_URL = 'http://localhost:4000/requests?status=pending'
-const TMDB_URL = 'http://localhost:4000/search'
 
 class RequestList extends Component {
     constructor(props) {
