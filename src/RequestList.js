@@ -22,15 +22,11 @@ class RequestList extends Component {
     }
 
     async getDbInfo() {
-        const {isLoaded, requests} = this.state;
+        const {isLoaded} = this.state;
         if (isLoaded) {
-            requests.every(r => {
-                this.setState(st => ({
-                    requests: st.requests.map(item => (
-                        {...item, poster_image: '', cover_image: ''}
-                    ))
-                }))
-            })
+            this.setState(st => ({
+                requests: st.requests.map(r => ({...r, poster_image: r._id, background_image: r._id}))
+            }))
         }
     }
 
