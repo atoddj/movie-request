@@ -6,10 +6,9 @@ import './App.css';
 function App() {
   return (
     <div className="App">
+      <Search />
       <h1>Pending requests</h1>
       <RequestList />
-      <h2>Request a friggin movie</h2>
-      <Search />
     </div>
   );
 }
