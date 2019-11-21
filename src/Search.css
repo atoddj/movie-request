@@ -1,0 +1,26 @@
+.Search {
+    display:flex;
+    align-items:center;
+    justify-content: center;
+    flex-wrap:wrap;
+}
+
+.SearchForm {
+    width:100%;
+}
+
+.SearchForm input {
+    height:100px;
+    font-size:3em;
+    background-color: inherit;
+    border: 0;
+    border-bottom: 1px solid;
+    color: inherit;
+}
+
+.SearchForm-submit {
+    font-size: 3em;
+    color: inherit;
+    background-color: inherit;
+    border: none;
+}
