@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import SearchForm from './SearchForm';
 import Result from './Result';
+import './Search.css';
 
 import Axios from 'axios';
 

@@ -26,8 +26,8 @@ class SearchForm extends Component {
             <div className="SearchForm">
                 <form onSubmit={this.handleSubmit}>
                     <label htmlFor="query-input"></label>
-                    <input type="text" name="query" id="query-input" onChange={this.handleChange} value={query} />
-                    <button>Search</button>
+                    <input type="text" name="query" id="query-input" placeholder="Search" onChange={this.handleChange} value={query} />
+                    <button className="SearchForm-submit"><i class="fas fa-search"></i></button>
                 </form>
             </div>
          )
