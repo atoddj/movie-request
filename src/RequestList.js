@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Request from './Request';
 import axios from 'axios';
 
-const REQUEST_URL = 'http://localhost:4000/requests?status=pending'
+const REQUEST_URL = 'http://localhost:4000/requests'
 
 class RequestList extends Component {
     constructor(props) {
@@ -15,7 +15,7 @@ class RequestList extends Component {
     }
 
     async componentDidMount() {
-       let requests = await axios.get(REQUEST_URL);
+       let requests = await axios.get(`${REQUEST_URL}?status=${this.props.status}`);
        this.setState({requests: requests.data, isLoaded: true});
        this.getDbInfo();
     }
