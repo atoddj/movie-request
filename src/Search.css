@@ -24,3 +24,24 @@
     background-color: inherit;
     border: none;
 }
+
+.tab-list {
+    display: flex;
+    flex: 0 0 100%;
+    padding-left: 0;
+    justify-content: center;
+    list-style-type: none;
+}
+
+.tab-list li {
+    padding: 10px;
+    font-size: 1.5em;
+    border-bottom: 1px solid orange;
+}
+
+li.active {
+    border-style: solid;
+    border-color: orange;
+    border-width: 1px 1px 0 1px;
+    background-color: rgba(255,165,0,0.1);
+}
