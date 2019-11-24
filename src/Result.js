@@ -1,5 +1,12 @@
 import React, { Component } from 'react';
 
+// TODO: 
+// Figure out a way to get status.
+// e.g.: if the search result exists in:
+// a) the request list (as pending) - show 'pending' flag, disable request button
+// b) the plex library - show 'available' flag, hide request button
+// c) neither a nor b - show and enable request button
+
 class Result extends Component {
 
     render() {
