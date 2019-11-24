@@ -5,6 +5,22 @@
     flex-wrap:wrap;
 }
 
+.Search-results {
+    width:100%;
+    max-width:600px;
+}
+
+.Result {
+    margin-bottom: 10px;
+    text-align:left;
+    position:relative;
+}
+
+.Result:hover {
+    transform: scale(1.02);
+    transition: all 0.4s;
+}
+
 .SearchForm {
     width:100%;
 }
@@ -45,3 +61,39 @@ li.active {
     border-width: 1px 1px 0 1px;
     background-color: rgba(255,165,0,0.1);
 }
+
+.media-card {
+    background: linear-gradient(to right, #0d0d0c 50%, transparent 100%);
+    border-radius: 10px;
+    z-index:2;
+    position:relative;
+    padding: 10px;
+}
+
+.media-header img{
+    float:left;
+    padding-right: 10px;
+}
+
+.media-header h2 {
+    margin: 0;
+}
+
+.media-desc {
+    clear:both;
+    padding-top:10px;
+    width:100%;
+    max-width:300px;
+}
+
+.blur-back {
+    background-size:cover;
+    position:absolute;
+    top:0;
+    right: 0;
+    width:80%;
+    height:100%;
+    z-index:1;
+    border-radius: 10px;
+}
+

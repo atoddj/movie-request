@@ -12,13 +12,17 @@ class Result extends Component {
                     <div className="media-header">
                         <img src={`//image.tmdb.org/t/p/w92/${result.poster_path}`} alt={`Poster for ${result.original_name || result.original_title}`} />
                         <h2>{result.original_name || result.original_title}</h2>
-                        {result.media_type && <span>{result.media_type}</span>}
-                        {(relDate||firstAirDate) && <span>{relDate||firstAirDate}</span>}
+                        {result.media_type && <span>{result.media_type},</span>}
+                        {(relDate||firstAirDate) && <span> {relDate||firstAirDate}</span>}
                     </div>
                     <div className="media-desc">
                         <p>{result.overview}</p>
                     </div>
+                    <div className="media-card-button">
+                        <button className="Result-button">Request</button>
+                    </div>
                 </div>
+                <div className="blur-back" style={{backgroundImage: `url('//image.tmdb.org/t/p/original${result.backdrop_path}')`}}></div>
             </div>
         );
     }
