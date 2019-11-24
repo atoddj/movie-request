@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Request from './Request';
 import axios from 'axios';
+import './RequestList.css';
 
 const REQUEST_URL = 'http://localhost:4000/requests'
 
@@ -32,7 +33,7 @@ class RequestList extends Component {
     render() { 
         const {requests, isLoaded} = this.state;
         const list = requests.map(item => (
-            <Request key={item._id} name={item.movie_name} />
+            <Request key={item._id} name={item.movie_name} admin={this.props.admin} />
         ));
         return ( 
             <div className="RequestList">

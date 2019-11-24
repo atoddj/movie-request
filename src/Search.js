@@ -6,19 +6,27 @@ import './Search.css';
 
 import Axios from 'axios';
 
-const TMDB_URL = 'http://localhost:4000/search'
+const TMDB_URL = 'http://localhost:4000/search';
+const AUTH_URL = 'http://localhost:4000/auth';
 
 class Search extends Component {
     constructor(props) {
         super(props);
         this.state = { 
-            searchResults: [], 
-            resultsLoaded: false,
+            searchResults: [],
+            isLoggedIn: false,
             activeTab: 'pending requests',
             tabs: [{name: "pending requests", status: "pending"}, {name: 'fulfilled requests', status: "complete"}]
         }
         this.performSearch = this.performSearch.bind(this);
         this.handleTabClick = this.handleTabClick.bind(this);
+    }
+
+    async componentDidMount() {
+        if (window.location.search) {
+            const authRes = await Axios.get(`${AUTH_URL}${window.location.search}`);
+            this.setState(authRes.data);
+        }
     }
 
     async performSearch(query) {
@@ -27,7 +35,6 @@ class Search extends Component {
         })
         this.setState(st => ({
             searchResults: tmdbRes.data.results,
-            resultsLoaded: true,
             tabs: st.tabs.length === 2 ? [{name: 'search', status: 'done'}, ...st.tabs] : st.tabs,
             activeTab: 'search'
         }))
@@ -40,7 +47,7 @@ class Search extends Component {
     }
 
     render() {
-        const {searchResults,resultsLoaded,tabs,activeTab} = this.state;
+        const {searchResults,tabs,activeTab,isLoggedIn} = this.state;
         const resultList = searchResults.filter(r => {
             return r.media_type !== 'person'
         }).map(r => (
@@ -62,7 +69,7 @@ class Search extends Component {
                     </div>
                     )
             } else {
-                return <RequestList key={t.status} status={t.status} />
+                return <RequestList key={t.status} status={t.status} admin={isLoggedIn} />
             }
         });
 
