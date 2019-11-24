@@ -1,0 +1,18 @@
+.RequestList {
+    width: 100%;
+    max-width:400px;
+}
+
+.Request{
+    display:flex;
+    justify-content: space-between;
+    padding:4px;
+}
+
+.Request:hover {
+    background-color: rgba(255,125,0,0.1);
+}
+
+.Request-edit {
+    cursor:pointer;
+}
