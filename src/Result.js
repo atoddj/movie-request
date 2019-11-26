@@ -13,6 +13,7 @@ class Result extends Component {
         const {result} = this.props;
         const relDate = result.release_date ? new Date(result.release_date).getFullYear() : null;
         const firstAirDate = result.first_air_date ? new Date(result.first_air_date).getFullYear() : null;
+        const isPending = result.status === "pending";
         return ( 
             <div className="Result">
                 <div className="media-card">
@@ -21,12 +22,15 @@ class Result extends Component {
                         <h2>{result.original_name || result.original_title}</h2>
                         {result.media_type && <span>{result.media_type},</span>}
                         {(relDate||firstAirDate) && <span> {relDate||firstAirDate}</span>}
+                        {isPending && 
+                            <div className="Result-status"><i class="fas fa-exclamation-triangle"></i> Request Pending</div>
+                        }
                     </div>
                     <div className="media-desc">
                         <p>{result.overview}</p>
                     </div>
                     <div className="media-card-button">
-                        <button className="Result-button">Request</button>
+                        <button className="Result-button" disabled={isPending}>{isPending ? 'Pending' : 'Request'}</button>
                     </div>
                 </div>
                 <div className="blur-back" style={{backgroundImage: `url('//image.tmdb.org/t/p/original${result.backdrop_path}')`}}></div>

@@ -21,6 +21,10 @@
     transition: all 0.4s;
 }
 
+.Result-status {
+    color: yellow;
+}
+
 .SearchForm {
     width:100%;
 }
