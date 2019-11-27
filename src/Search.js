@@ -15,6 +15,7 @@ class Search extends Component {
         this.state = { 
             searchResults: [],
             isLoggedIn: false,
+            token: '',
             activeTab: 'pending requests',
             tabs: [{name: "pending requests", status: "pending"}, {name: 'fulfilled requests', status: "complete"}]
         }
@@ -25,7 +26,8 @@ class Search extends Component {
     async componentDidMount() {
         if (window.location.search) {
             const authRes = await Axios.get(`${AUTH_URL}${window.location.search}`);
-            this.setState(authRes.data);
+            this.setState({...authRes.data, token: window.location.search.split('=')[1]});
+            window.history.pushState(null, '', '/');
         }
     }
 

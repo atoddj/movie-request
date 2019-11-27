@@ -21,8 +21,12 @@
     transition: all 0.4s;
 }
 
-.Result-status {
+.Result-pending {
     color: yellow;
+}
+
+.Result-available {
+    color: #4dd0e1;
 }
 
 .SearchForm {
