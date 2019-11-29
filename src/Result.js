@@ -1,13 +1,17 @@
 import React, { Component } from 'react';
 
-// TODO: 
-// Figure out a way to get status.
-// e.g.: if the search result exists in:
-// a) the request list (as pending) - show 'pending' flag, disable request button
-// b) the plex library - show 'available' flag, hide request button
-// c) neither a nor b - show and enable request button
-
 class Result extends Component {
+
+    constructor(props) {
+        super(props);
+
+        this.handleClick = this.handleClick.bind(this);
+    }
+
+    handleClick() {
+        const {postNewRequest, result} = this.props;
+        postNewRequest(result);
+    }
 
     render() {
         const {result} = this.props;
@@ -35,7 +39,7 @@ class Result extends Component {
                     </div>
                     <div className="media-card-button">
                         {!isAvailable && 
-                            <button className="Result-button" disabled={isPending}>{isPending ? 'Pending' : 'Request'}</button>
+                            <button className="Result-button" disabled={isPending} onClick={this.handleClick} >{isPending ? 'Pending' : 'Request'}</button>
                         }
                     </div>
                 </div>
