@@ -8,6 +8,7 @@ import Axios from 'axios';
 
 const TMDB_URL = 'http://localhost:4000/search';
 const AUTH_URL = 'http://localhost:4000/auth';
+const POST_URL = 'http://localhost:4000/requests';
 
 class Search extends Component {
     constructor(props) {
@@ -21,6 +22,7 @@ class Search extends Component {
         }
         this.performSearch = this.performSearch.bind(this);
         this.handleTabClick = this.handleTabClick.bind(this);
+        this.postNewRequest = this.postNewRequest.bind(this);
     }
 
     async componentDidMount() {
@@ -48,13 +50,18 @@ class Search extends Component {
         })
     }
 
+    async postNewRequest(searchObj) {
+        const tmdbPost = await Axios.post(POST_URL, searchObj);
+        if (tmdbPost.data.success) {
+            this.setState(st => ({
+                searchResults: st.searchResults.map(r => r.id === searchObj.id ? {...r, status: tmdbPost.data.status} : r)
+            }));
+        }
+    }
+
     render() {
         const {searchResults,tabs,activeTab,isLoggedIn} = this.state;
-        const resultList = searchResults.filter(r => {
-            return r.media_type !== 'person'
-        }).map(r => (
-            <Result result={r} />
-        ));
+        const resultList = searchResults.filter(r => (r.media_type !== 'person')).map(r => (<Result result={r} postNewRequest={this.postNewRequest} />));
         const tabList = tabs.map(t => {
             return(
                 <li className={activeTab === t.name ? 'active' : ''} name={t.name} onClick={this.handleTabClick} >
