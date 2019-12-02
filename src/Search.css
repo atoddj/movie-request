@@ -29,6 +29,20 @@
     color: #4dd0e1;
 }
 
+.Result-seasons {
+    padding-top: 10px;
+}
+
+.Result-season {
+    background-color: #4dd0e1;
+    color: #000000;
+    display:inline-block;
+    margin-right: 4px;
+    border-radius: 20%;
+    min-width:30px;
+    text-align: center;
+}
+
 .SearchForm {
     width:100%;
 }

@@ -19,6 +19,7 @@ class Result extends Component {
         const firstAirDate = result.first_air_date ? new Date(result.first_air_date).getFullYear() : null;
         const isPending = result.status === "pending";
         const isAvailable = result.status === 'Available';
+        const seasons = result.seasons ? result.seasons.map(s => (<span className="Result-season">{s}</span>)) : '';
         return ( 
             <div className="Result">
                 <div className="media-card">
@@ -32,6 +33,12 @@ class Result extends Component {
                         }
                         {isAvailable &&
                             <div className="Result-available"><i className="fas fa-check-circle"></i> Available for streaming</div>
+                            
+                        }
+                        {seasons && 
+                            <div className="Result-seasons">
+                                {seasons}
+                            </div>
                         }
                     </div>
                     <div className="media-desc">
