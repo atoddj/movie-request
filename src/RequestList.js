@@ -3,7 +3,7 @@ import Request from './Request';
 import Axios from 'axios';
 import './RequestList.css';
 
-const REQUESTS_URL = 'http://localhost:8082/api/requests'
+const REQUESTS_URL = '/api/requests'
 
 class RequestList extends Component {
     constructor(props) {

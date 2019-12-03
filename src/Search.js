@@ -6,9 +6,9 @@ import './Search.css';
 
 import Axios from 'axios';
 
-const TMDB_URL = 'http://localhost:8082/api/search';
-const AUTH_URL = 'http://localhost:8082/api/auth';
-const REQUESTS_URL = 'http://localhost:8082/api/requests';
+const TMDB_URL = '/api/search';
+const AUTH_URL = '/api/auth';
+const REQUESTS_URL = '/api/requests';
 
 class Search extends Component {
     constructor(props) {
