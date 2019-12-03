@@ -12,23 +12,12 @@ class RequestList extends Component {
             isLoaded: false,
             requests: []
         }
-        this.getDbInfo = this.getDbInfo.bind(this);
         this.deleteRequest = this.deleteRequest.bind(this);
     }
 
     async componentDidMount() {
        let requests = await Axios.get(`${REQUESTS_URL}?status=${this.props.status}`);
        this.setState({requests: requests.data, isLoaded: true});
-       this.getDbInfo();
-    }
-
-    async getDbInfo() {
-        const {isLoaded} = this.state;
-        if (isLoaded) {
-            this.setState(st => ({
-                requests: st.requests.map(r => ({...r, poster_image: r._id, background_image: r._id}))
-            }))
-        }
     }
 
     async deleteRequest(id) {
