@@ -6,9 +6,9 @@ import './Search.css';
 
 import Axios from 'axios';
 
-const TMDB_URL = 'http://localhost:4000/search';
-const AUTH_URL = 'http://localhost:4000/auth';
-const REQUESTS_URL = 'http://localhost:4000/requests';
+const TMDB_URL = 'http://localhost:8082/api/search';
+const AUTH_URL = 'http://localhost:8082/api/auth';
+const REQUESTS_URL = 'http://localhost:8082/api/requests';
 
 class Search extends Component {
     constructor(props) {
@@ -91,7 +91,6 @@ class Search extends Component {
                     {tabList}
                 </ul>
                 {tabContent}
-                
             </div>
          )
     }
