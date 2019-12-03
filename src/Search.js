@@ -8,7 +8,7 @@ import Axios from 'axios';
 
 const TMDB_URL = 'http://localhost:4000/search';
 const AUTH_URL = 'http://localhost:4000/auth';
-const POST_URL = 'http://localhost:4000/requests';
+const REQUESTS_URL = 'http://localhost:4000/requests';
 
 class Search extends Component {
     constructor(props) {
@@ -34,14 +34,16 @@ class Search extends Component {
     }
 
     async performSearch(query) {
-        const tmdbRes = await Axios.get(TMDB_URL, {
-            params: {q: query}
-        })
-        this.setState(st => ({
-            searchResults: tmdbRes.data.results,
-            tabs: st.tabs.length === 2 ? [{name: 'search', status: 'done'}, ...st.tabs] : st.tabs,
-            activeTab: 'search'
-        }))
+        if(query) {
+            const tmdbRes = await Axios.get(TMDB_URL, {
+                params: {q: query}
+            });
+            this.setState(st => ({
+                searchResults: tmdbRes.data.results,
+                tabs: st.tabs.length === 2 ? [{name: 'search', status: 'done'}, ...st.tabs] : st.tabs,
+                activeTab: 'search'
+            }));
+        }
     }
 
     handleTabClick(e) {
@@ -51,7 +53,7 @@ class Search extends Component {
     }
 
     async postNewRequest(searchObj) {
-        const tmdbPost = await Axios.post(POST_URL, searchObj);
+        const tmdbPost = await Axios.post(REQUESTS_URL, searchObj);
         if (tmdbPost.data.success) {
             this.setState(st => ({
                 searchResults: st.searchResults.map(r => r.id === searchObj.id ? {...r, status: tmdbPost.data.status} : r)
@@ -60,7 +62,7 @@ class Search extends Component {
     }
 
     render() {
-        const {searchResults,tabs,activeTab,isLoggedIn} = this.state;
+        const {searchResults,tabs,activeTab,isLoggedIn,token} = this.state;
         const resultList = searchResults.filter(r => (r.media_type !== 'person')).map(r => (<Result result={r} postNewRequest={this.postNewRequest} />));
         const tabList = tabs.map(t => {
             return(
@@ -78,7 +80,7 @@ class Search extends Component {
                     </div>
                     )
             } else {
-                return <RequestList key={t.status} status={t.status} admin={isLoggedIn} />
+                return <RequestList key={t.status} status={t.status} admin={isLoggedIn} token={token} />
             }
         });
 
