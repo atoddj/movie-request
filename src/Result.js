@@ -24,8 +24,8 @@ class Result extends Component {
             <div className="Result">
                 <div className="media-card">
                     <div className="media-header">
-                        <img src={`//image.tmdb.org/t/p/w92/${result.poster_path}`} alt={`Poster for ${result.original_name || result.original_title}`} />
-                        <h2>{result.original_name || result.original_title}</h2>
+                        <img src={`//image.tmdb.org/t/p/w92/${result.poster_path}`} alt={`Poster for ${result.name || result.title}`} />
+                        <h2>{result.name || result.title}</h2>
                         {result.media_type && <span>{result.media_type},</span>}
                         {(relDate||firstAirDate) && <span> {relDate||firstAirDate}</span>}
                         {isPending && 
