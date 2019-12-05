@@ -17,7 +17,12 @@ class RequestList extends Component {
 
     async componentDidMount() {
        let requests = await Axios.get(`${REQUESTS_URL}?status=${this.props.status}`);
-       this.setState({requests: requests.data, isLoaded: true});
+       requests.data.sort((a,b) => {
+           const dateA = new Date(a.timestamp);
+           const dateB = new Date(b.timestamp);
+           return dateA - dateB;
+       });
+       this.setState({requests:requests.data, isLoaded: true});
     }
 
     async deleteRequest(id) {
