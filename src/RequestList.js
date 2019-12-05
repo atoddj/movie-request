@@ -17,12 +17,12 @@ class RequestList extends Component {
 
     async componentDidMount() {
        let requests = await Axios.get(`${REQUESTS_URL}?status=${this.props.status}`);
-       requests.data.sort((a,b) => {
+       let sortedData = requests.data.sort((a,b) => {
            const dateA = new Date(a.timestamp);
            const dateB = new Date(b.timestamp);
-           return dateA - dateB;
+           return dateB - dateA;
        });
-       this.setState({requests:requests.data, isLoaded: true});
+       this.setState({requests:sortedData, isLoaded: true});
     }
 
     async deleteRequest(id) {
@@ -37,7 +37,7 @@ class RequestList extends Component {
     render() { 
         const {requests, isLoaded} = this.state;
         const list = requests.map(item => (
-            <Request key={item._id} id={item._id} name={item.movie_name} admin={this.props.admin} handleDelete={this.deleteRequest} />
+            <Request key={item._id} item={item} admin={this.props.admin} handleDelete={this.deleteRequest} />
         ));
         return ( 
             <div className="RequestList">
