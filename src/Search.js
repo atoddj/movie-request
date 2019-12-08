@@ -89,7 +89,7 @@ class Search extends Component {
             <div className="Search">
                 <nav className="navbar">
                 <a href="/" className="logo">
-                    Floobies
+                    Floobie
                 </a>
                     <ul className="tab-list">
                         {tabList}
