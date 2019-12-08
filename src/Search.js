@@ -88,8 +88,8 @@ class Search extends Component {
         return ( 
             <div className="Search">
                 <nav className="navbar">
-                <a href="https://freecodecamp.org" className="logo">
-                    <img src="https://s3.amazonaws.com/freecodecamp/freecodecamp_logo.svg" alt="freeCodeCamp logo" />
+                <a href="/" className="logo">
+                    Floobie
                 </a>
                     <ul className="tab-list">
                         {tabList}
