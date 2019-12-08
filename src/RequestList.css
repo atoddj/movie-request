@@ -3,6 +3,10 @@
     max-width:600px;
 }
 
+.RequestList h1 {
+    text-transform: capitalize;
+}
+
 .Request{
     display:flex;
     justify-content: space-between;

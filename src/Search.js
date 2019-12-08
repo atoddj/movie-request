@@ -76,7 +76,7 @@ class Search extends Component {
             if(t.name === 'search') {
                 return ( 
                     <div className="Search-results">
-                        <h1>Search results</h1>
+                        <h1>Search Results</h1>
                         {resultList}
                     </div>
                     )
@@ -95,9 +95,7 @@ class Search extends Component {
                         {tabList}
                         <SearchForm performSearch={this.performSearch} />
                     </ul>
-                    
                 </nav>
-                
                 {tabContent}
             </div>
          )
