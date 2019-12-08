@@ -36,11 +36,13 @@ class RequestList extends Component {
 
     render() { 
         const {requests, isLoaded} = this.state;
+        const {status} = this.props;
         const list = requests.map(item => (
             <Request key={item._id} item={item} admin={this.props.admin} handleDelete={this.deleteRequest} />
         ));
         return ( 
             <div className="RequestList">
+            <h1>{status} List</h1>
                 {isLoaded && list}
             </div>
          )

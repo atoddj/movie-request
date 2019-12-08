@@ -17,8 +17,8 @@ class Search extends Component {
             searchResults: [],
             isLoggedIn: false,
             token: '',
-            activeTab: 'pending requests',
-            tabs: [{name: "pending requests", status: "pending"}, {name: 'fulfilled requests', status: "complete"}]
+            activeTab: 'pending',
+            tabs: [{name: "pending", status: "pending"}, {name: 'fulfilled', status: "complete"}]
         }
         this.performSearch = this.performSearch.bind(this);
         this.handleTabClick = this.handleTabClick.bind(this);
@@ -76,6 +76,7 @@ class Search extends Component {
             if(t.name === 'search') {
                 return ( 
                     <div className="Search-results">
+                        <h1>Search results</h1>
                         {resultList}
                     </div>
                     )
@@ -86,10 +87,17 @@ class Search extends Component {
 
         return ( 
             <div className="Search">
-                <SearchForm performSearch={this.performSearch} />
-                <ul className="tab-list">
-                    {tabList}
-                </ul>
+                <nav className="navbar">
+                <a href="https://freecodecamp.org" className="logo">
+                    <img src="https://s3.amazonaws.com/freecodecamp/freecodecamp_logo.svg" alt="freeCodeCamp logo" />
+                </a>
+                    <ul className="tab-list">
+                        {tabList}
+                        <SearchForm performSearch={this.performSearch} />
+                    </ul>
+                    
+                </nav>
+                
                 {tabContent}
             </div>
          )
