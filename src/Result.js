@@ -28,13 +28,6 @@ class Result extends Component {
                         <h2>{result.name || result.title}</h2>
                         {result.media_type && <span>{result.media_type},</span>}
                         {(relDate||firstAirDate) && <span> {relDate||firstAirDate}</span>}
-                        {isPending && 
-                            <div className="Result-pending"><i className="fas fa-exclamation-triangle"></i> Request Pending</div>
-                        }
-                        {isAvailable &&
-                            <div className="Result-available"><i className="fas fa-check-circle"></i> Available for streaming</div>
-                            
-                        }
                         {seasons && 
                             <div className="Result-seasons">
                                 {seasons}
@@ -47,6 +40,13 @@ class Result extends Component {
                     <div className="media-card-button">
                         {!isAvailable && 
                             <button className="Result-button" disabled={isPending} onClick={this.handleClick} >{isPending ? 'Pending' : 'Request'}</button>
+                        }
+                        {isPending && 
+                            <div className="Result-pending"><i className="fas fa-exclamation-triangle"></i> Request Pending</div>
+                        }
+                        {isAvailable &&
+                            <div className="Result-available"><i className="fas fa-check-circle"></i> Available for streaming</div>
+                            
                         }
                     </div>
                 </div>
