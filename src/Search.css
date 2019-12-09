@@ -7,13 +7,23 @@
 
 .Search-results {
     width:100%;
-    max-width:600px;
+    max-width:1600px;
+    display:flex;
+    flex-wrap:wrap;
+    justify-content: space-between;
+    margin: 0 15px;
+}
+.Search-results h1 {
+    display:flex;
+    justify-content: left;
+    flex: 0 0 100%;
 }
 
 .Result {
     margin-bottom: 10px;
     text-align:left;
     position:relative;
+    margin-right:8px;
 }
 
 .Result:hover {
@@ -48,6 +58,10 @@
     padding: 10px;
 }
 
+.media-card-button {
+    min-height: 23px;
+}
+
 .media-header img{
     float:left;
     padding-right: 10px;
@@ -55,7 +69,7 @@
 
 .media-header {
     width: 100%;
-    max-width: 349px;
+    max-width: 300px;
 }
 
 .media-header h2 {
@@ -67,6 +81,14 @@
     padding-top:10px;
     width:100%;
     max-width:300px;
+}
+
+.media-desc p {
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .blur-back {
@@ -86,6 +108,7 @@ nav {
     align-items: center;
     justify-content: space-between;
     padding: 0 10px;
+    background-color:#1e1e1e;
 }
 
 nav .logo {
@@ -106,14 +129,16 @@ nav .logo {
     padding: 0 10px;
     font-size: 1.3em;
     cursor: pointer;
+    padding: 6px;
 }
 
 li.active {
-    background-color: rgba(255,165,0,0.1);
+    background-color: #17d0d5;
+    border-radius: 3px;
 }
 
 .SearchForm {
-    /* width:100%; */
+    margin-left: 10px;
 }
 
 .SearchForm input {
