@@ -38,7 +38,7 @@ class Result extends Component {
                         <p>{result.overview}</p>
                     </div>
                     <div className="media-card-button">
-                        {!isAvailable && 
+                        {(!isAvailable && !isPending) && 
                             <button className="Result-button" disabled={isPending} onClick={this.handleClick} >{isPending ? 'Pending' : 'Request'}</button>
                         }
                         {isPending && 
