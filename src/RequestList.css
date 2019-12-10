@@ -1,24 +1,15 @@
 .RequestList {
     width: 100%;
     max-width:1600px;
+    display:flex;
+    flex-wrap:wrap;
+    justify-content: space-between;
+    margin: 0 15px;
 }
 
 .RequestList h1 {
     text-transform: capitalize;
     display:flex;
     justify-content: left;
-}
-
-.Request{
-    display:flex;
-    justify-content: space-between;
-    padding:4px;
-}
-
-.Request:hover {
-    background-color: rgba(255,125,0,0.1);
-}
-
-.Request-edit {
-    cursor:pointer;
+    flex: 0 0 100%;
 }
