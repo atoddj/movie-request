@@ -1,55 +1,92 @@
-
 nav {
-    width:100%;
-    display:flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 10px;
-    background-color:#1e1e1e;
+  padding: 5px 20px;
+  background-color: #1e1e1e;
 }
 
-nav .logo {
-    font-size:2em;
+nav .menu .logo {
+    font-size: 2em;
     color: white;
     text-decoration: none;
+  }
+
+/* Mobile Menu */
+nav .menu {
+  list-style-type: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.tab-list {
-    display: flex;
-    padding-left: 0;
-    justify-content: center;
-    list-style-type: none;
-    align-items:center;
+nav .menu .toggle {
+  order: 1;
 }
 
-.tab-list li {
-    padding: 0 10px;
-    font-size: 1.3em;
-    cursor: pointer;
-    padding: 6px;
+nav .menu .item {
+  width: 100%;
+  text-align: center;
+  order: 2;
+  display: none;
 }
 
-li.active {
-    background-color: #17d0d5;
-    border-radius: 3px;
+nav .menu .item.active {
+  display: block;
 }
 
-.SearchForm {
-    margin-left: 10px;
+/* Tablet menu */
+@media all and (min-width: 600px) {
+    nav .menu {
+        justify-content: center;
+    }
+    nav .menu .logo {
+        flex: 1;
+    }
+    nav .menu .toggle {
+        flex: 1;
+        text-align: right;
+    }
+}
+
+/* Desktop menu */
+@media all and (min-width: 900px) {
+    nav .menu .item {
+        display: block;
+        width: auto;
+        cursor: pointer;
+        order: 0;
+        font-size: 1.2em;
+    }
+
+    nav .menu .item.current {
+        background: teal;
+    }
+    
+    nav .menu li {
+        padding: 15px 10px;
+    }
+
+    nav .menu .toggle {
+        display: none;
+    }
+
+    nav .menu .SearchForm {
+        margin-left: 20px;
+    }
+
 }
 
 .SearchForm input {
-    height:20px;
-    font-size:1em;
-    background-color: inherit;
-    border: 0;
-    border-bottom: 1px solid;
-    color: inherit;
+  height: 20px;
+  font-size: 1em;
+  background-color: inherit;
+  border: 0;
+  border-bottom: 1px solid;
+  color: inherit;
 }
 
 .SearchForm-submit {
-    font-size: 1em;
-    color: inherit;
-    background-color: inherit;
-    border: none;
+  font-size: 1em;
+  color: inherit;
+  background-color: inherit;
+  border: none;
 }
