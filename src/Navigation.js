@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import SearchForm from './SearchForm';
+import './Navigation.css';
 
 class Navigation extends Component {
     constructor(props) {
