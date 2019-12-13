@@ -4,9 +4,17 @@ import SearchForm from './SearchForm';
 class Navigation extends Component {
     constructor(props) {
         super(props);
-        this.state = {  }
+        this.state = {  };
+        this.handleTabClick = this.handleTabClick.bind(this);
     }
+
+    handleTabClick(e) {
+        const {handleClick} = this.props;
+        handleClick(e);
+    }
+
     render() {
+        const {tabs, activeTab} = this.props;
         const tabList = tabs.map(t => {
             return(
                 <li className={activeTab === t.name ? 'active' : ''} name={t.name} onClick={this.handleTabClick} >
@@ -21,7 +29,7 @@ class Navigation extends Component {
                 </a>
                 <ul className="tab-list">
                     {tabList}
-                    <SearchForm performSearch={this.performSearch} />
+                    <SearchForm performSearch={this.props.performSearch} />
                 </ul>
             </nav>
         )

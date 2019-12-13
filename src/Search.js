@@ -81,7 +81,7 @@ class Search extends Component {
 
         return ( 
             <div className="Search">
-                <Navigation />
+                <Navigation tabs={tabs} activeTab={activeTab} handleClick={this.handleTabClick} performSearch={this.performSearch} />
                 {tabContent}
             </div>
          )
