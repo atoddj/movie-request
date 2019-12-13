@@ -13,7 +13,7 @@ nav .menu .logo {
 nav .menu {
   list-style-type: none;
   display: flex;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
 }
