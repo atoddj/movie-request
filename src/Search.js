@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import SearchForm from './SearchForm';
+
+import Navigation from './Navigation';
 import Result from './Result';
 import RequestList from './RequestList';
 import './Search.css';
@@ -64,13 +65,6 @@ class Search extends Component {
     render() {
         const {searchResults,tabs,activeTab,isLoggedIn,token} = this.state;
         const resultList = searchResults.filter(r => (r.media_type !== 'person')).map(r => (<Result result={r} postNewRequest={this.postNewRequest} />));
-        const tabList = tabs.map(t => {
-            return(
-                <li className={activeTab === t.name ? 'active' : ''} name={t.name} onClick={this.handleTabClick} >
-                    {t.name}
-                </li>
-            )
-        });
 
         const tabContent = tabs.filter(t=> (t.name === activeTab)).map(t => {
             if(t.name === 'search') {
@@ -87,15 +81,7 @@ class Search extends Component {
 
         return ( 
             <div className="Search">
-                <nav className="navbar">
-                <a href="/" className="logo">
-                    Floobie
-                </a>
-                    <ul className="tab-list">
-                        {tabList}
-                        <SearchForm performSearch={this.performSearch} />
-                    </ul>
-                </nav>
+                <Navigation />
                 {tabContent}
             </div>
          )
