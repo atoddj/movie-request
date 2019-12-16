@@ -1,28 +1,54 @@
 import React, { Component } from "react";
+import Axios from "axios";
+import Modal from "./Modal";
 
 class Result extends Component {
   constructor(props) {
     super(props);
     this.state = { isModalOpen: false, showObject: {} };
 
-    this.handleClick = this.handleClick.bind(this);
+    this.addRequest = this.addRequest.bind(this);
     this.openModal = this.openModal.bind(this);
+    this.closeModal = this.closeModal.bind(this);
   }
 
-  handleClick() {
+  addRequest() {
     const { postNewRequest, result } = this.props;
     postNewRequest(result);
   }
 
-  openModal() {
+  async openModal() {
+    this.setState({
+      isModalOpen: true,
+      modalMessage: `Loading information about ${this.props.result.name ||
+        this.props.result.title}`
+    });
+    //   set state for loading icon?
+
     //perform new api call to show endpoint
+
+    // let response = await Axios.get(endpoint that checks tmdb for total seasons + checks plexdb for which seasons may be available)
+
     //set open modal state
-    this.setState({ isModalOpen: true, showObject: { title: String, numSeasonsAvailable: Array, numSeasonsReady: Array } });
+    this.setState({
+      showObject: {
+        title: String,
+        numSeasonsAvailable: Array,
+        numSeasonsReady: Array
+      }
+    });
+  }
+
+  closeModal() {
+      this.setState({
+          isModalOpen: false,
+          modalMessage: ''
+      })
   }
 
   render() {
     const { result } = this.props;
-    const { isModalOpen, showObject } = this.state;
+    const { isModalOpen, modalMessage } = this.state;
     const relDate = result.release_date
       ? new Date(result.release_date).getFullYear()
       : null;
@@ -41,7 +67,7 @@ class Result extends Component {
 
     if (!isAvailable && !isPending) {
       button = (
-        <button className="Result-button" onClick={this.handleClick}>
+        <button className="Result-button" onClick={this.addRequest}>
           Request
         </button>
       );
@@ -69,7 +95,7 @@ class Result extends Component {
     }
 
     return (
-      <div className="Result">
+      <div className="Result" style={ isModalOpen ? { transform:'none', transition: 'none'} : {}} >
         <div className="media-card">
           <div className="media-header">
             <img
@@ -94,7 +120,15 @@ class Result extends Component {
             backgroundImage: `url('//image.tmdb.org/t/p/original${result.backdrop_path}')`
           }}
         ></div>
-        {isModalOpen && <div className="Modal"></div>}
+        {isModalOpen && (
+          <Modal>
+            {modalMessage && (
+              <div className="Modal-loading-message">{modalMessage}</div>
+            )}
+            <div className="Modal-close" onClick={this.closeModal}><i className="fas fa-times"></i></div>
+            <div className="Modal-title"></div>
+          </Modal>
+        )}
       </div>
     );
   }
