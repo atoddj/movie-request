@@ -31,7 +31,7 @@ class Result extends Component {
     //perform new api call to show endpoint
 
     const tmdbTvRes = await Axios.get(`${TMDB_TV_URL}/${result.id}`);
-    console.log(tmdbTvRes);
+    console.log(tmdbTvRes.data);
 
     // let response = await Axios.get(endpoint that checks tmdb for total seasons + checks plexdb for which seasons may be available)
 
@@ -39,7 +39,7 @@ class Result extends Component {
     this.setState({
       showObject: {
         title: result.name,
-        numSeasonsAvailable: tmdbTvRes.number_of_seasons,
+        numSeasonsAvailable: tmdbTvRes.data.number_of_seasons,
         numSeasonsReady: Array
       }
     });
@@ -55,7 +55,7 @@ class Result extends Component {
 
   render() {
     const { result } = this.props;
-    const { isModalOpen, modalMessage } = this.state;
+    const { isModalOpen, modalMessage, showObject } = this.state;
     const relDate = result.release_date
       ? new Date(result.release_date).getFullYear()
       : null;
@@ -134,6 +134,9 @@ class Result extends Component {
             )}
             <div className="Modal-close" onClick={this.closeModal}><i className="fas fa-times"></i></div>
             <div className="Modal-title"></div>
+            <div className="Modal-body">
+              Number of seasons: {showObject.numSeasonsAvailable}
+            </div>
           </Modal>
         )}
       </div>
