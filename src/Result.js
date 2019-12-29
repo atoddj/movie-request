@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import Axios from "axios";
 import Modal from "./Modal";
 
+const TMDB_TV_URL = '/api/tv/';
+
 class Result extends Component {
   constructor(props) {
     super(props);
@@ -18,6 +20,7 @@ class Result extends Component {
   }
 
   async openModal() {
+    const {result} = this.props;
     this.setState({
       isModalOpen: true,
       modalMessage: `Loading information about ${this.props.result.name ||
@@ -27,13 +30,16 @@ class Result extends Component {
 
     //perform new api call to show endpoint
 
+    const tmdbTvRes = await Axios.get(`${TMDB_TV_URL}/${result.id}`);
+    console.log(tmdbTvRes);
+
     // let response = await Axios.get(endpoint that checks tmdb for total seasons + checks plexdb for which seasons may be available)
 
     //set open modal state
     this.setState({
       showObject: {
-        title: String,
-        numSeasonsAvailable: Array,
+        title: result.name,
+        numSeasonsAvailable: tmdbTvRes.number_of_seasons,
         numSeasonsReady: Array
       }
     });
@@ -42,7 +48,8 @@ class Result extends Component {
   closeModal() {
       this.setState({
           isModalOpen: false,
-          modalMessage: ''
+          modalMessage: '',
+          showObject: {}
       })
   }
 
