@@ -3,6 +3,8 @@ import React, { Component } from 'react';
 import Navigation from './Navigation';
 import Result from './Result';
 import RequestList from './RequestList';
+import uuid from 'uuid/v4';
+
 import './Search.css';
 
 import Axios from 'axios';
@@ -64,12 +66,12 @@ class Search extends Component {
 
     render() {
         const {searchResults,tabs,activeTab,isLoggedIn,token} = this.state;
-        const resultList = searchResults.filter(r => (r.media_type !== 'person')).map(r => (<Result result={r} postNewRequest={this.postNewRequest} />));
+        const resultList = searchResults.filter(r => (r.media_type !== 'person')).map(r => (<Result key={uuid()} result={r} postNewRequest={this.postNewRequest} />));
 
         const tabContent = tabs.filter(t=> (t.name === activeTab)).map(t => {
             if(t.name === 'search') {
                 return ( 
-                    <div className="Search-results">
+                    <div className="Search-results" key={uuid()}>
                         <h1>Search Results</h1>
                         {resultList}
                     </div>

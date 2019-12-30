@@ -26,7 +26,7 @@ class Navigation extends Component {
   render() {
     const { tabs, currentTab } = this.props;
     const { isMenuOpen } = this.state;
-    const tabList = tabs.map(t => {
+    const tabList = tabs.map((t, index) => {
       let classList = "item";
       if (currentTab === t.name) {
         classList += " current";
@@ -35,7 +35,7 @@ class Navigation extends Component {
         classList += " active";
       }
       return (
-        <li className={classList} name={t.name} onClick={this.handleTabClick}>
+        <li key={`li-${index}`} className={classList} name={t.name} onClick={this.handleTabClick}>
           {t.name}
         </li>
       );
