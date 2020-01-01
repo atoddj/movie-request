@@ -1,16 +1,17 @@
 .RequestList {
-    width: 100%;
-    max-width:1600px;
-    display:flex;
-    flex-wrap:wrap;
-    justify-content: space-between;
-    padding: 0 30px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  max-width: 1600px;
+  margin: auto;
+  padding: 0 30px;
+  width: 100%;
 }
 
 .RequestList h1 {
-    text-transform: capitalize;
-    display:flex;
-    justify-content: left;
-    flex: 0 0 100%;
-    padding: 10px 0;
+  text-transform: capitalize;
+  display: flex;
+  justify-content: left;
+  flex: 0 0 100%;
+  padding: 10px 0;
 }
