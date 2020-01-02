@@ -71,7 +71,7 @@ class Search extends Component {
         const tabContent = tabs.filter(t=> (t.name === activeTab)).map(t => {
             if(t.name === 'search') {
                 return ( 
-                    <div className="Search-results" key={uuid()}>
+                    <div className="RequestList" key={uuid()}>
                         <h1>Search Results</h1>
                         {resultList}
                     </div>

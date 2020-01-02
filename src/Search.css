@@ -1,18 +1,3 @@
-.Search-results {
-    width:100%;
-    max-width:1600px;
-    display:flex;
-    flex-wrap:wrap;
-    justify-content: space-between;
-    padding: 0 30px;
-}
-.Search-results h1 {
-    display:flex;
-    justify-content: left;
-    flex: 0 0 100%;
-    padding: 10px 0;
-}
-
 .Result {
     margin-bottom: 10px;
     text-align:left;
