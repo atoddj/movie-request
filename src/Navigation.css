@@ -1,5 +1,5 @@
 nav {
-  padding: 5px 20px;
+  padding: 5px 10px;
   background-color: #1e1e1e;
 }
 
@@ -41,6 +41,9 @@ nav .menu .item.active {
 
 /* Tablet menu */
 @media all and (min-width: 600px) {
+  nav {
+    padding: 5px 20px;
+  }
     nav .menu {
         justify-content: center;
     }
