@@ -38,6 +38,13 @@
     letter-spacing: 1px;
     color:#555555;
     font-weight:500;
+    padding: 0 8px;
+    transition: all .6s;
+}
+
+.Result-button:hover {
+    background-color: teal;
+    color: white;
 }
 
 .media-card {
@@ -50,6 +57,7 @@
 
 .media-card-button {
     min-height: 30px;
+    margin-top: 16px;
 }
 
 .media-header img{
